@@ -1,7 +1,5 @@
 name: Publish website
 on:
-  release:
-    types: [published]
   workflow_dispatch:
 
 permissions:
@@ -20,10 +18,10 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Download site bundle
+      - name: Download latest site bundle
         run: |
           curl --fail --location --retry 3 \
-            "https://github.com/quaner-1/premier-league-stars/releases/download/site-v1/premier-league-stars-public-site.zip" \
+            "https://github.com/quaner-1/premier-league-stars/releases/latest/download/premier-league-stars-public-site.zip" \
             --output site.zip
           mkdir site
           unzip -q site.zip -d site
